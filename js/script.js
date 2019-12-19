@@ -4,10 +4,9 @@ let valueAction;
 let valueFirst;
 let valueSecond;
 
-while (true) {
+do {
     valueAction = prompt('What action do you want to do?\n\Enter one of the values: +, -, *, /');
-    if (valueAction === '+' || valueAction === '-' || valueAction === '*' || valueAction === '/') break;
-}
+} while (valueAction !== '+' && valueAction !== '-' && valueAction !== '*' && valueAction !== '/');
 
 do {
     valueFirst = prompt('Enter the first value (Number)');
