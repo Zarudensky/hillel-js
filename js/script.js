@@ -1,67 +1,24 @@
 "use strict";
 
-let valueAction;
-let valueFirst;
-let valueSecond;
+// const numbers = prompt('Enter numbers separated by commas\n\Example: 1, 2, 3, 4');
+const numbers = ('1, 3, 2, .2, 1.38, 4, 3*5,не число,,0x34');
 
-do {
-    valueAction = prompt('What action do you want to do?\n\Enter one of the values: +, -, *, /');
-} while (valueAction !== '+' && valueAction !== '-' && valueAction !== '*' && valueAction !== '/');
+let arr = numbers.split(',').map(str => +str);
+console.log(arr);
 
-do {
-    valueFirst = prompt('Enter the first value (Number)');
-} while (isNaN(valueFirst));
+arr = arr.filter(item => item);
+console.log(arr);
 
-do {
-    valueSecond = prompt('Enter the second value (Number)');
-} while (isNaN(valueSecond));
+console.log('Max value: ' + Math.max(...arr));
 
-valueFirst = Number(valueFirst);
-valueSecond = Number(valueSecond);
 
-function calcAddition (valueFirst,valueSecond) {
-    const resultAddition = valueFirst + valueSecond;
-    alert('Addition result: ' + valueFirst + ' + ' + valueSecond + ' = ' + resultAddition);
-}
 
-function calcSubtraction (valueFirst,valueSecond) {
-    const resultSubtraction = valueFirst - valueSecond;
-    alert('Subtraction result: ' + valueFirst + ' - ' + valueSecond + ' = ' + resultSubtraction);
-}
+const result = arr.reduce(function(sum, current) {
+    return sum + current;
+}, 0);
+console.log('Sum: ' + result);
 
-function calcMultiplication (valueFirst,valueSecond) {
-    const resultMultiplication = valueFirst * valueSecond;
-    alert('Multiplication result: ' + valueFirst + ' * ' + valueSecond + ' = ' + resultMultiplication);
-}
+// const sum = arr => arr.reduce((res, el) => res + (Array.isArray(el) ? sum(el) : el), 0);
+// console.log(sum(arr));
 
-function calcDivision (valueFirst,valueSecond) {
-    const resultDivision = valueFirst / valueSecond;
-    alert('Division result: ' + valueFirst + ' / ' + valueSecond + ' = ' + resultDivision);
-}
-
-switch(valueAction){
-    case '+': 
-        calcAddition(valueFirst,valueSecond);
-    break;
-    case '-':
-        calcSubtraction(valueFirst,valueSecond);
-    break;
-    case '*':
-        calcMultiplication(valueFirst,valueSecond);
-    break;
-    case '/':
-        calcDivision(valueFirst,valueSecond);
-    break;
-}
-
-// The same method as the "switch" using "if"
-
-// if (valueAction === '+') {
-//     calcAddition(valueFirst,valueSecond);
-// }else if (valueAction === '-') {
-//     calcSubtraction(valueFirst,valueSecond);
-// } else if (valueAction === '*') {
-//     calcMultiplication(valueFirst,valueSecond);
-// } else if (valueAction === '/') {
-//     calcDivision(valueFirst,valueSecond);
-// }
+console.log('Четные: ' + arr.filter(item => item % 2 === 0));
