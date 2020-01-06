@@ -1,27 +1,38 @@
 "use strict";
-const operand = document.querySelector('#operand');
-const validation = document.querySelector('#validation');
+const countLines = document.querySelector('#operand');
+const validationMessage = document.querySelector('#validation');
 const list = document.querySelector('#list');
 
 document.querySelector('#generate').addEventListener('click', onBtnClick);
 
 function onBtnClick() {
-    if (isNaN(operand.value) || operand.value <= 0) {
-        validation.style.display = 'block';
-        clearList();
-    } else {
-        validation.style.display = 'none';
-        clearList();
-        updateList()
-    }
+    clearList();
+    validation();
 }
 
 function clearList() {
     list.innerHTML = '';
 }
 
+function validation() {
+    if (isNaN(countLines.value) || countLines.value <= 0) {
+        showMessage();
+    } else {
+        hideMessage();
+        updateList();
+    }
+}
+
+function showMessage() {
+    validationMessage.style.display = 'block';
+}
+
+function hideMessage() {
+    validationMessage.style.display = 'none';
+}
+
 function updateList() {
-    for (let i = 0; i < operand.value; i++) {
+    for (let i = 0; i < countLines.value; i++) {
         let newElement = document.createElement('li');
         newElement.innerHTML = i + 1;
         list.append(newElement);
