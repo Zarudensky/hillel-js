@@ -1,0 +1,21 @@
+.input__block {
+  position: relative;
+  padding-bottom: 30px;
+}
+#generate {
+  cursor: pointer;
+}
+#generate:hover {
+  background: #ccc;
+}
+#validation {
+  display: none;
+  position: absolute;
+  bottom: 10px;
+  color: #d22222;
+}
+input[type=number]::-webkit-inner-spin-button, 
+input[type=number]::-webkit-outer-spin-button { 
+  -webkit-appearance: none; 
+  margin: 0; 
+}
