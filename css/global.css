@@ -1,4 +1,4 @@
-* {
+/* * {
   position: 0px;
   margin: 0;
   padding: 0;
@@ -21,4 +21,21 @@ h1 {
   text-transform: capitalize;
   margin-top: 25px;
   color: #004282;
+} */
+
+.task-list {
+  margin-bottom: 20px;
+}
+.task-item {
+  color: #555;
+  border: 1px solid #bbb;
+  cursor: pointer;
+  padding: 10px 20px;
+  margin: 5px 0;
+  font-size: 20px;
+  background-color: lightyellow;
+}
+
+.task-item.done {
+  background-color: lightgreen;
 }

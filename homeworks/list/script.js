@@ -1,5 +1,5 @@
 "use strict";
-const countLines = document.querySelector('#operand');
+const countLines = document.querySelector('#countLines');
 const validationMessage = document.querySelector('#validation');
 const list = document.querySelector('#list');
 
