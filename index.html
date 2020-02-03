@@ -9,70 +9,26 @@
 		<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto">
 		<link rel="stylesheet" href="css/global.css">
 
-		<script src="js/script.js" async></script>
-    
+		<script src="js/Acardion.js" defer></script>
+		<script src="js/script.js" defer></script>
+
 		<title>hillel</title>
 	</head>
-	<body class="index__page">
-		<header class="header">
-			<h1>Hello hillel</h1>
-		</header>
-		<main class="content">
-				
-			<form id="newContactForm" class="form">
-				<table class="u-full-width">
-					<thead>
-						<tr>
-							<th>Name</th>
-							<th>Surname</th>
-							<th>Phone</th>
-							<th>Actions</th>
-						</tr>
-					</thead>
-					<tbody id="contactsList"></tbody>
-					<tfoot>
-						<tr>
-							<td>
-								<input
-									type="text"
-									name="name"
-									id="nameInput"
-									class="form-input"
-								/>
-							</td>
-							<td>
-								<input
-									type="text"
-									name="surname"
-									id="surnameInput"
-									class="form-input"
-								/>
-							</td>
-							<td>
-								<input
-									type="text"
-									name="phone"
-									id="phoneInput"
-									class="form-input"
-								/>
-							</td>
-							<td><button id="addContactBtn">Add Contact</button></td>
-						</tr>
-					</tfoot>
-				</table>
-			</form>
-			<script type="text/template" id="contactTemplate">
-				<td>{{name}}</td>
-				<td>{{surname}}</td>
-				<td>{{phone}}</td>
-				<td><button type="button" class="delete-btn">Delete</button></td>
-			</script>
-
-		</main>
-
-		<footer class="footer">
-			
-		</footer>
-	
-	</body>
+	<body>
+        <div id="myAccordeon">
+            <div class="active">
+                <div>Title 1</div>
+                <div>Content 1</div>
+            </div>
+            <div>
+                <div>Title 2</div>
+                <div>Content 2</div>
+            </div>
+            <div>
+                <div>Title 3</div>
+                <div>Content 3</div>
+            </div>
+        </div>
+        <button id="btn">SHow 2</button>
+    </body>
 </html>

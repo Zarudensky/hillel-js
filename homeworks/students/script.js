@@ -3,26 +3,28 @@
 const students = [ 
     new Student('Student 1', [10,9,8,0,10]),
     new Student('Student 12', [10,0,8,0,3,4])
-    ];
+];
 
-    console.log(students);
+function Student(name, marks) {
+    this.name = name;
+    this.marks = marks;
+}
 
-// function countMark(student) {
-//     return {
-//         averageMark: value => student + value,
-//         minMark: value => student - value,
-//         maxMark: value => student / value
-//     }
-// }
+Student.prototype.averageMark = function () {
+    const total = this.marks.reduce((sum, current) => sum + current, 0);
+    const average = total / this.marks.length;
+    return Math.floor(average * 100) / 100;
+}
 
-// const returnMark = countMark(student);
+Student.prototype.minMark = function () {
+    return Math.min(...this.marks);
+}
 
-// function averageMarkGroup() {
-//     console.log('averageMark');
-// }
+Student.prototype.maxMark = function () {
+    return Math.max(...this.marks);
+}
 
-
-// console.log(returnMark.averageMark()); // - возвращает среднюю оценку
-// console.log(returnMark.minMark()); // - возвращает минимальную оценку
-// console.log(returnMark.maxMark()); // - возвращает максимальную оценку
-// console.log(returnMark.averageMark()); // - которая возвращает среднюю оценку по группе
+function averageGroupMark(students) {
+    const total = students.reduce((sum, students) => sum + students.averageMark(), 0);
+    return total / students.length;
+}

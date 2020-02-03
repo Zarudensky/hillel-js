@@ -1,0 +1,57 @@
+* {
+  position: 0px;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  outline: 0;
+}
+.main {
+  background: #5f7b96;
+}
+.conteiner {
+  position: relative;
+  width: calc(100% - 50px);
+  max-width: 800px;
+  padding: 25px;
+  margin: 0 auto;
+}
+.tabset {
+  display: flex;
+  position: relative;
+}
+.tabset-item-title {
+  padding: 10px;
+  border-top-left-radius: 2px;
+  border-top-right-radius: 2px;
+  cursor: pointer;
+}
+.active .tabset-item-title {
+  background: #ccc;
+}
+
+.tabset-item-content {
+  display: none;
+}
+.active .tabset-item-content {
+  display: block;
+  position: absolute;
+  left: 0;
+  right: 0;
+  height: 200px;
+  padding: 10px;
+  border-radius: 2px;
+  background: #ccc;
+}
+.buttons {
+  position: absolute;
+  top: 25px;
+  right: 25px;
+}
+.btn {
+  padding: 5px 10px;
+  border-radius: 2px;
+  cursor: pointer;
+}
+.prev {
+  margin-right: 5px;
+}
