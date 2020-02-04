@@ -1,86 +1,126 @@
 "use strict";
 
 class Tabset {
-    constructor(el, config) {
-        this.config = config || {
-            hideAll: true
-        };
-
-        this.el = el;
-
+    constructor(container) {
+        this.container = container;
         this.init();
     }
 
     static TABSET_CLASS = 'tabset';
-    static TABSET_ITEM_CLASS = 'tabset-item';
-    static TABSET_ITEM_TITLE_CLASS = 'tabset-item-title';
-    static TABSET_ITEM_CONTENT_CLASS = 'tabset-item-content';
-    static ACTIVE_ITEM_CLASS = 'active';
-    
+    static CONTEINER_CLASS = 'tabset__conteiner';
+    static TABS_CLASS = 'tabset__tabs';
+    static TITLE_CLASS = 'tabset__title';
+    static ACTIVE_CLASS = 'active';
+    static BUTTONS_CLASS = 'tabset__buttons';
+
     init() {
-        this.bindClasses();
-        this.bindCallbacks();
+        this.wrapContainer();
+        this.copyTitles();
+        this.addEventListener();
+        this.addButtons();
+        this.show(0);
     }
 
-    bindClasses() {
-        this.el.classList.add(Tabset.TABSET_CLASS);
-        Array.prototype.forEach.call(this.el.children, itemEl => {
-            itemEl.classList.add(Tabset.TABSET_ITEM_CLASS);
-            itemEl.children[0].classList.add(
-                Tabset.TABSET_ITEM_TITLE_CLASS
-            );
-            itemEl.children[1].classList.add(
-                Tabset.TABSET_ITEM_CONTENT_CLASS
-            );
-        });
+    wrapContainer() {
+        this.titlesList = document.createElement('div');
+        this.titlesList.className = Tabset.TABS_CLASS;
+
+        const wrap = document.createElement('div');
+        wrap.className = Tabset.CONTEINER_CLASS;
+        wrap.appendChild(this.titlesList);
+
+        this.container.parentNode.insertBefore(wrap, this.container);
+        wrap.appendChild(this.container);
+
+        this.container.classList.add(Tabset.TABSET_CLASS);
     }
 
-    bindCallbacks() {
-        this.el.addEventListener('click', this.onTabsetClick.bind(this));
+    copyTitles() {
+        const titles = this.container.querySelectorAll(`.${Tabset.TITLE_CLASS}`);
+        Array.prototype.forEach.call(titles, el => this.titlesList.appendChild(el));
+    }
+    
+    addEventListener() {
+        this.titlesList.addEventListener('click', e => this.onTitleClick(e));
     }
 
-    onTabsetClick(e) {
-        switch (true) {
-            case e.target.classList.contains(
-                Tabset.TABSET_ITEM_TITLE_CLASS
-            ):
-                this.onTitleClick(e.target);
-                break;
+    addButtons() {
+        const btnsContainer = document.createElement('div');
+        btnsContainer.className = Tabset.BUTTONS_CLASS;
+
+        const prevBtn = document.createElement('button');
+        prevBtn.textContent = '< Prev';
+        prevBtn.className = 'tabset__btn prev';
+        prevBtn.addEventListener('click', () => this.prev());
+
+        const nextBtn = document.createElement('button');
+        nextBtn.textContent = 'Next >';
+        nextBtn.className = 'tabset__btn';
+        nextBtn.addEventListener('click', () => this.next());
+
+        btnsContainer.append(prevBtn);
+        btnsContainer.append(nextBtn);
+
+        this.titlesList.append(btnsContainer);
+    }
+
+    onTitleClick(e) {
+        const titleIndex = Array.prototype.indexOf.call(
+            this.titlesList.children,
+            e.target
+        );
+
+        if (titleIndex >= 0) {
+            this.show(titleIndex);
         }
     }
 
-    onTitleClick(titleElem) {
-        const itemElem = titleElem.parentNode;
-        const isCurrentVisible = this.isVisible(itemElem);
-
-        if (this.config.hideAll) {
-            this.hideAll();
+    show(index) {
+        if (!this.titlesList.children[index]) {
+            return;
         }
 
-        if (!isCurrentVisible) {
-            this.show(itemElem);
-        } else {
-            this.hide(itemElem);
+        this.hide(this.activeIndex);
+        this.activeIndex = index;
+
+        this.titlesList.children[index].classList.add(Tabset.ACTIVE_CLASS);
+        this.container.children[index].classList.add(Tabset.ACTIVE_CLASS);
+    }
+
+    hide(index) {
+        if (!this.titlesList.children[index]) {
+            return;
         }
-    }
-
-    show(itemElem) {
-        itemElem.classList.add(Tabset.ACTIVE_ITEM_CLASS);
-    }
-
-    hide(itemElem) {
-        itemElem.classList.remove(Tabset.ACTIVE_ITEM_CLASS);
-    }
-
-    isVisible(itemElem) {
-        return itemElem.classList.contains(Tabset.ACTIVE_ITEM_CLASS);
+        this.titlesList.children[index].classList.remove(Tabset.ACTIVE_CLASS);
+        this.container.children[index].classList.remove(Tabset.ACTIVE_CLASS);
     }
 
     hideAll() {
-        const visibleElements = this.el.querySelectorAll(
-            '.' + Tabset.ACTIVE_ITEM_CLASS
+        Array.prototype.forEach.call(
+            this.titlesList.children,
+            (titleEl, index) => {
+                this.hide(index);
+            }
         );
+    }
 
-        Array.prototype.forEach.call(visibleElements, this.hide.bind(this));
+    next() {
+        let newIndex = this.activeIndex + 1;
+
+        if (newIndex >= this.titlesList.children.length - 1) {
+            newIndex = 0;
+        }
+
+        this.show(newIndex);
+    }
+
+    prev() {
+        let newIndex = this.activeIndex - 1;
+
+        if (newIndex < 0) {
+            newIndex = this.titlesList.children.length - 2;
+        }
+
+        this.show(newIndex);
     }
 }
