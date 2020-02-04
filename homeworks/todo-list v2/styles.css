@@ -14,3 +14,14 @@
   padding: 25px;
   margin: 0 auto;
 }
+.task {
+  width: calc(100% - 20px);
+  padding: 10px;
+  pointer-events: none;
+  border-radius: 2px;
+  background: #ccc389;
+  margin-bottom: 20px;
+}
+.task.completed {
+  background: #71c175;
+}
