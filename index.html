@@ -9,26 +9,21 @@
 		<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto">
 		<link rel="stylesheet" href="css/global.css">
 
-		<script src="js/Acardion.js" defer></script>
-		<script src="js/script.js" defer></script>
+		<!-- <script src="js/Acardion.js" defer></script> -->
+		<script src="js/script.js" async></script>
 
 		<title>hillel</title>
 	</head>
 	<body>
-        <div id="myAccordeon">
-            <div class="active">
-                <div>Title 1</div>
-                <div>Content 1</div>
-            </div>
-            <div>
-                <div>Title 2</div>
-                <div>Content 2</div>
-            </div>
-            <div>
-                <div>Title 3</div>
-                <div>Content 3</div>
-            </div>
+        <div class="container">
+            <div id="albums" class="albums"></div>
+            <div id="photos" class="photos"></div>
         </div>
-        <button id="btn">SHow 2</button>
+
+        <script type="text/template" id="templateAlbum">
+            <div class="album {{completed}}" data-id="{{id}}">
+                {{text}}
+            </div>
+        </script>
     </body>
 </html>
