@@ -1,28 +1,3 @@
-/* * {
-  position: 0px;
-  margin: 0;
-  padding: 0;
-  border: 0;
-  outline: 0;
-}
-
-body {
-  background: #fff;
-  font-size: 100%;
-  font-family: 'Roboto',sans-serif;
-  font-weight: normal;
-  font-style: normal;
-  cursor: default;
-  overflow-x: hidden;
-}
-
-h1 {
-  text-align: center;
-  text-transform: capitalize;
-  margin-top: 25px;
-  color: #004282;
-} */
-
 * {
   position: 0px;
   margin: 0;
@@ -32,9 +7,8 @@ h1 {
 }
 .main {
   background: #5f7b96;
-  overflow: hidden;
 }
-.container {
+.conteiner {
   width: calc(100% - 50px);
   max-width: 800px;
   padding: 25px;
@@ -71,23 +45,15 @@ h1 {
   margin-right: auto;
 }
 .board {
-  position: relative;
   display: flex;
   flex-wrap: wrap;
   padding-top: 20px;
-  min-height: calc(100vh - 130px);
-  box-shadow: 2px 3px 7px rgba(102,102,102,.75);
-  overflow: hidden;
 }
 .sticker {
   position: relative;
   width: calc(25% - 15px);
-  height: 150px;
   margin-bottom: 15px;
   margin-right: 20px;
-  background: rgba(255, 200, 35, 0.9);
-  box-shadow: 2px 3px 7px rgba(102,102,102,.75);
-  z-index: 1;
 }
 .sticker:nth-child(4n) {
   margin-right: 0;
@@ -108,27 +74,11 @@ h1 {
 }
 .sticker__delete:hover {
   color: #f44336;
-}
-.sticker__title {
-  font-size: 16px;
-  line-height: 30px;
-  background: rgba(210, 155, 1, 0.5);
-  padding: 0 25px 0 10px;
-  cursor: all-scroll;
-}
-.sticker__descr {
-  padding: 10px;
-}
-.input__form {
-  width: calc(100% - 42px);
-  padding: 10px 20px;
-  margin-bottom: 20px;
-  border: 1px solid #999;
-  border-radius: 2px;
-  font-size: 14px;
-  background: #eaeaea;
+} 
+.sticker__text {
+  width: calc(100% - 40px);
+  height: 150px;
+  padding: 30px 20px 20px;
+  background: #ffd350;
   resize: none;
-}
-#formSticker {
-  overflow: hidden;
 }

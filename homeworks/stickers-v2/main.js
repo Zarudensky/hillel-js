@@ -17,6 +17,7 @@ $(function() {
             form[0].reset();
         }
     });
+    
     const form = dialog.find('form').on('submit', onFormSubmit);
 
     $('#addBtn').on('click', () => dialog.dialog('open'));
@@ -108,13 +109,12 @@ $(function() {
         saveStickers();
     }
 
-    // LocalStorage
     function saveStickers() {
-        localStorage.setItem('stickers', JSON.stringify(stickers));
+        localStorage.setItem('stickersVertionTwo', JSON.stringify(stickers));
     }
 
     function getStickers() {
-        const stickers = localStorage.getItem('stickers');
+        const stickers = localStorage.getItem('stickersVertionTwo');
 
         return stickers ? JSON.parse(stickers) : [];
     }
