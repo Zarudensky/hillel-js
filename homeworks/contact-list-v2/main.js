@@ -98,7 +98,7 @@ $(function() {
     } 
     
     function saveBtnClick() {
-        const contact = getNewContact();
+        const contact = getContact();
         if (contact.id) {
             updateContact(contact);
         } else {
@@ -106,7 +106,7 @@ $(function() {
         }
     }
 
-    function getNewContact() {
+    function getContact() {
         const obj = {};
         for (let i = 0; i < $inputForm.length; i++) {
             obj[$inputForm[i].name] = $inputForm[i].value;
@@ -154,5 +154,4 @@ $(function() {
             body: JSON.stringify(contact)
         });
     }
-        
 });
