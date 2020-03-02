@@ -1,5 +1,3 @@
-module.exports = function div (valueFirst,valueSecond) {
-    const resultDivision = valueFirst / valueSecond;
-    console.log(resultDivision);
-};
+module.exports = div = (valueFirst,valueSecond) => valueFirst / valueSecond;
+
 

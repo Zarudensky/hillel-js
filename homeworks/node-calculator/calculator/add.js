@@ -1,4 +1,1 @@
-module.exports = function add(valueFirst,valueSecond) {
-    const resultAddition = valueFirst + valueSecond;
-    console.log(resultAddition);
-};
+module.exports = add = (valueFirst,valueSecond) => valueFirst + valueSecond;
