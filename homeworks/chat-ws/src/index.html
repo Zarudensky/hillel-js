@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Chat WebSocket</title>
+    </head>
+    <body class="main">
+        <div class="conteiner">
+            <form id="formMessage" class="form__message">
+                <h1 class="title">messages</h1>
+                <div id="messageContainer" class="message__container"></div>
+                <div class="input__block">
+                    <input type="text" name="author" class="input__form input__form-name" placeholder="Your name"/>
+                    <input type="text" name="message" class="input__form input__form-message" placeholder="Enter message"/>
+                    <button class="btn send__btn">Send</button>
+                </div>
+            </form>
+        
+            <script type="text/template" id="templateMessage">
+                <div>{{author}} :</div>
+                <div>{{message}}</div>
+            </script>
+        </div>
+    </body>
+</html>
